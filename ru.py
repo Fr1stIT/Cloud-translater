@@ -1,12 +1,24 @@
 from tkinter import *
 from tkinter.ttk import Combobox
 from tkinter import scrolledtext
+from tkinter import messagebox as mb
 import requests
 import json
 import threading
-import os
 import subprocess
-
+import pyttsx3
+global de_voice, en_voice, es_voice, fr_voice, it_voice, ja_voice, pl_voice, ru_voice
+tts = pyttsx3.init()
+voices = tts.getProperty('voices')
+de_voice = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_DE-DE_HEDDA_11.0"
+en_voice = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0"
+es_voice = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_ES-ES_HELENA_11.0"
+fr_voice = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_FR-FR_HORTENSE_11.0"
+it_voice = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_IT-IT_ELSA_11.0"
+ja_voice = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_JA-JP_HARUKA_11.0"
+pl_voice = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_PL-PL_PAULINA_11.0"
+ru_voice = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_RU-RU_IRINA_11.0"
+global input_text, input_language
 check_from = True
 light = False
 def button_settings():
@@ -21,6 +33,8 @@ def button_settings():
         input_label ['fg'] = 'white'
         input_box ['bg'] = 'gray20'
         input_box ['fg'] = 'white'
+        buttoninputsound ['bg'] = 'gray20'
+        buttoninputsound ['fg'] = 'white'
         input_transliteration_label ['bg'] = 'gray10'
         input_transliteration_label ['fg'] = 'white'
         input_transliteration_box ['bg'] = 'gray20'
@@ -29,6 +43,8 @@ def button_settings():
         translate_label ['fg'] = 'white'
         translate_box ['bg'] = 'gray20'
         translate_box ['fg'] = 'white'
+        buttontranslatesound ['bg'] = 'gray20'
+        buttontranslatesound ['fg'] = 'white'
         transliteration_label ['bg'] = 'gray10'
         transliteration_label ['fg'] = 'white'
         transliteration_box ['bg'] = 'gray20'
@@ -54,6 +70,8 @@ def button_settings():
         input_label ['fg'] = 'black'
         input_box ['bg'] = 'white'
         input_box ['fg'] = 'black'
+        buttoninputsound ['bg'] = 'white'
+        buttoninputsound ['fg'] = 'black'
         input_transliteration_label ['bg'] = 'gray90'
         input_transliteration_label ['fg'] = 'black'
         input_transliteration_box ['bg'] = 'white'
@@ -62,6 +80,8 @@ def button_settings():
         translate_label ['fg'] = 'black'
         translate_box ['bg'] = 'white'
         translate_box ['fg'] = 'black'
+        buttontranslatesound ['bg'] = 'white'
+        buttontranslatesound ['fg'] = 'black'
         transliteration_label ['bg'] = 'gray90'
         transliteration_label ['fg'] = 'black'
         transliteration_box ['bg'] = 'white'
@@ -84,151 +104,55 @@ def button_settings():
         elif language == 'Беларуская':
             window1.destroy()
             window.destroy()
-            os.system('be.exe')
-            os.kill('cmd.exe')
-
+            subprocess.Popen(['be.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
         elif language == 'Български':
             window1.destroy()
             window.destroy()
-            os.system('bg.exe')
+            subprocess.Popen(['bg.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
         elif language == 'Қазақ':
             window1.destroy()
             window.destroy()
-            os.system('kk.exe')
+            subprocess.Popen(['kk.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
         elif language == 'Српски':
             window1.destroy()
             window.destroy()
-            os.system('sr.exe')
+            subprocess.Popen(['sr.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
         elif language == 'Українська':
             window1.destroy()
             window.destroy()
-            os.system('uk.exe')
-        elif language == 'Čeština':
-            window1.destroy()
-            window.destroy()
-            os.system('cs.exe')
-        elif language == 'Dansk':
-            window1.destroy()
-            window.destroy()
-            os.system('de.exe')
+            subprocess.Popen(['uk.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
         elif language == 'Deutsch':
             window1.destroy()
             window.destroy()
-            os.system('de.exe')
-        elif language == 'Eesti':
-            window1.destroy()
-            window.destroy()
-            os.system('et.exe')
+            subprocess.Popen(['de.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
         elif language == 'English':
             window1.destroy()
             window.destroy()
-            subprocess.Popen(['en.exe'], shell=True, creationflags=subprocess.CREATE_NEW_CONSOLE)
-            
-            
-            
+            subprocess.Popen(['en.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
         elif language == 'Español':
             window1.destroy()
             window.destroy()
-            os.system('es.exe')
-        elif language == 'Français':
-            window1.destroy()
-            window.destroy()
-            os.system('fr.exe')
-        elif language == 'Hrvatski':
-            window1.destroy()
-            window.destroy()
-            os.system('hr.exe')
+            subprocess.Popen(['es.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
         elif language == 'Italiano':
             window1.destroy()
             window.destroy()
-            os.system('it.exe')
-        elif language == 'Latviešu':
-            window1.destroy()
-            window.destroy()
-            os.system('lv.exe')
-        elif language == 'Lietuvių':
-            window1.destroy()
-            window.destroy()
-            os.system('lt.exe')
-        elif language == 'Nederlands':
-            window1.destroy()
-            window.destroy()
-            os.system('nl.exe')
-        elif language == 'Norsk':
-            window1.destroy()
-            window.destroy()
-            os.system('no.exe')
-        elif language == 'Português':
-            window1.destroy()
-            window.destroy()
-            os.system('pt.exe')
-        elif language == 'Polski':
-            window1.destroy()
-            window.destroy()
-            os.system('pl.exe')
-        elif language == 'Slovenčina':
-            window1.destroy()
-            window.destroy()
-            os.system('sk.exe')
-        elif language == 'Slovenščina':
-            window1.destroy()
-            window.destroy()
-            os.system('sl.exe')
-        elif language == 'Suomi':
-            window1.destroy()
-            window.destroy()
-            os.system('fi.exe')
-        elif language == 'Svenska':
-            window1.destroy()
-            window.destroy()
-            os.system('sv.exe')
-        elif language == 'Ελληνικά':
-            window1.destroy()
-            window.destroy()
-            os.system('el.exe')
-        elif language == 'Հայերեն':
-            window1.destroy()
-            window.destroy()
-            os.system('hy.exe')
-        elif language == 'עִבְרִית':
-            window1.destroy()
-            window.destroy()
-            os.system('he.exe')
-        elif language == 'اَلْعَرَبِيَّةُ':
-            window1.destroy()
-            window.destroy()
-            os.system('ar.exe')
-        elif language == 'हिंदी':
-            window1.destroy()
-            window.destroy()
-            os.system('hi.exe')
-        elif language == '中文':
-            window1.destroy()
-            window.destroy()
-            os.system('zh.exe')
-        elif language == '日本語':
-            window1.destroy()
-            window.destroy()
-            os.system('ja.exe')
-        elif language == '한국어':
-            window1.destroy()
-            window.destroy()
-            os.system('ko.exe')
+            subprocess.Popen(['it.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
     if light == False:
         window1 = Tk()
         window1.title('Настройки')
         window1.geometry('305x105')
         window1 ['bg'] = 'gray20'
-        label_languages = Label(window1, text = 'Основой язык:')
+        window1.resizable(False, False)
+        label_languages = Label(window1, text = 'Основной язык:')
         label_languages ['bg'] = 'gray20'
         label_languages ['fg'] = 'white'
         label_languages ['font'] = ('Arial', 10, 'bold')
         label_languages.place(x = 10, y = 10, width = 125, height = 25)
         set_languages = Combobox(window1, width = 10, height = 25)
-        set_languages['values'] = ( 'Русский', 'Беларуская', 'Български', 'Қазақ', 'Српски', 'Українська', 'Čeština', 'Dansk', 'Deutsch', 'Eesti', 'English', 'Español', 'Français', 'Hrvatski', 'Italiano', 'Latviešu', 'Lietuvių', 'Nederlands', 'Norsk', 'Português', 'Polski', 'Slovenčina', 'Slovenščina', 'Suomi', 'Svenska', 'Ελληνικά', 'Հայերեն', 'עִבְרִית', 'اَلْعَرَبِيَّةُ', 'हिंदी', '中文', '日本語', '한국어')  
+        set_languages['values'] = ('Русский', 'Беларуская', 'Български', 'Қазақ', 'Српски', 'Українська', 'Deutsch', 'English', 'Español', 'Italiano')  
         set_languages.current(0)
         set_languages.place(x = 135, y = 10, width = 100, height = 25)
-        label_themes = Label(window1, text = 'Основая тема:')
+        label_themes = Label(window1, text = 'Основная тема:')
         label_themes ['bg'] = 'gray20'
         label_themes ['fg'] = 'white'
         label_themes ['font'] = ('Arial', 10, 'bold')
@@ -254,16 +178,17 @@ def button_settings():
         window1.title('Настройки')
         window1.geometry('305x105')
         window1 ['bg'] = 'white'
-        label_languages = Label(window1, text = 'Основой язык:')
+        window1.resizable(False, False)
+        label_languages = Label(window1, text = 'Основной язык:')
         label_languages ['bg'] = 'white'
         label_languages ['fg'] = 'black'
         label_languages ['font'] = ('Arial', 10, 'bold')
         label_languages.place(x = 10, y = 10, width = 125, height = 25)
         set_languages = Combobox(window1, width = 10, height = 25)
-        set_languages['values'] = ( 'Русский', 'Беларуская', 'Български', 'Қазақ', 'Српски', 'Українська', 'Čeština', 'Dansk', 'Deutsch', 'Eesti', 'English', 'Español', 'Français', 'Hrvatski', 'Italiano', 'Latviešu', 'Lietuvių', 'Nederlands', 'Norsk', 'Português', 'Polski', 'Slovenčina', 'Slovenščina', 'Suomi', 'Svenska', 'Ελληνικά', 'Հայերեն', 'עִבְרִית', 'اَلْعَرَبِيَّةُ', 'हिंदी', '中文', '日本語', '한국어')  
+        set_languages['values'] = ('Русский', 'Беларуская', 'Български', 'Қазақ', 'Српски', 'Українська', 'Deutsch', 'English', 'Español', 'Italiano')  
         set_languages.current(0)
         set_languages.place(x = 135, y = 10, width = 100, height = 25)
-        label_themes = Label(window1, text = 'Основая тема:')
+        label_themes = Label(window1, text = 'Основная тема:')
         label_themes ['bg'] = 'white'
         label_themes ['fg'] = 'black'
         label_themes ['font'] = ('Arial', 10, 'bold')
@@ -284,8 +209,9 @@ def button_settings():
         applybutton ['font'] = ('Arial', 10, 'bold')
         applybutton ['relief'] = 'raised'
         applybutton.place(x = 105, y = 70, width = 100, height = 25)
-def translate_button():
+def translate():
     while True:
+        global translate_language, input_text, input_language, data
         global check_from
         input_text = input_box.get('1.0', 'end')
         input_language = input_languages.get()
@@ -296,7 +222,7 @@ def translate_button():
             input_language = 'en'
         elif input_language == 'Арабский':
             input_language = 'ar'
-        elif input_language == 'Армняский':
+        elif input_language == 'Армянский':
             input_language = 'hy'
         elif input_language == 'Белорусский':
             input_language = 'be'
@@ -362,7 +288,7 @@ def translate_button():
             translate_language = 'en'
         elif translate_language == 'Арабский':
             translate_language = 'ar'
-        elif translate_language == 'Армняский':
+        elif translate_language == 'Армянский':
             translate_language = 'hy'
         elif translate_language == 'Белорусский':
             translate_language = 'be'
@@ -463,10 +389,76 @@ def translate_button():
         input_transliteration_box.delete('1.0', 'end')
         input_transliteration_box.insert('1.0', sourceTrans)
         input_transliteration_box.configure(state = 'disabled')
+def button_input_sound():
+    global input_text, input_language
+    if input_language == "de":
+        tts.setProperty('voice' , de_voice)
+        tts.say(str(input_text))
+        tts.runAndWait()
+    elif input_language == "en":
+        tts.setProperty('voice' , en_voice)
+        tts.say(str(input_text))
+        tts.runAndWait()
+    elif input_language == "es":
+        tts.setProperty('voice' , es_voice)
+        tts.say(str(input_text))
+        tts.runAndWait()
+    elif input_language == "fr":
+        tts.setProperty('voice' , fr_voice)
+        tts.say(str(input_text))
+        tts.runAndWait()
+    elif input_language == "it":
+        tts.setProperty('voice' , it_voice)
+        tts.say(str(input_text))
+        tts.runAndWait()
+    elif input_language == "ja":
+        tts.setProperty('voice' , ja_voice)
+        tts.say(str(input_text))
+        tts.runAndWait()
+    elif input_language == "ru":
+        tts.setProperty('voice' , ru_voice)
+        tts.say(str(input_text))
+        tts.runAndWait()
+    else:
+        msg = "Данный язык не поддерживается синтезом"
+        mb.showerror("Ошибка", msg)
+def button_translate_sound():
+    global translate_language, data
+    if translate_language == "de":
+        tts.setProperty('voice' , de_voice)
+        tts.say(str(data))
+        tts.runAndWait()
+    elif translate_language == "en":
+        tts.setProperty('voice' , en_voice)
+        tts.say(str(data))
+        tts.runAndWait()
+    elif translate_language == "es":
+        tts.setProperty('voice' , es_voice)
+        tts.say(str(data))
+    elif translate_language == "fr":
+        tts.setProperty('voice' , fr_voice)
+        tts.say(str(data))
+        tts.runAndWait()
+    elif translate_language == "it":
+        tts.setProperty('voice' , it_voice)
+        tts.say(str(data))
+        tts.runAndWait()
+    elif translate_language == "ja":
+        tts.setProperty('voice' , ja_voice)
+        tts.say(str(data))
+        tts.runAndWait()
+    elif translate_language == "ru":
+        tts.setProperty('voice' , ru_voice)
+        tts.say(str(data))
+        tts.runAndWait()
+    else:
+        msg = "Данный язык не поддерживается синтезом"
+        mb.showerror("Ошибка", msg)
 window = Tk()
 window.title('Переводчик')
 window.geometry('950x325')
 window ['bg'] = 'gray10'
+window.resizable(False, False)
 buttonsettings = Button(text = '⚙', command = button_settings)
 buttonsettings ['bg'] = 'gray20'
 buttonsettings ['fg'] = 'white'
@@ -480,9 +472,15 @@ input_label ['font'] = ('Arial', 10, 'bold')
 input_label ['justify'] = 'center'
 input_label.place(x = 50, y = 25, width = 110, height = 25)
 input_languages = Combobox(window)
-input_languages['values'] = ('Определить язык', 'Английский', 'Арабский', 'Армняский', 'Белорусский', 'Болгарский', 'Греческий', 'Датский', 'Иврит', 'Испанский', 'Итальянский', 'Казахский', 'Китайский', 'Корейский', 'Латышский', 'Литовский', 'Немецкий', 'Нидерландский', 'Норвежский', 'Польский', 'Португальский', 'Русский', 'Сербский', 'Словацкий', 'Словенский', 'Украинский', 'Финский', 'Французский', 'Хинди', 'Хорватский', 'Чешский', 'Шведский', 'Эстонский', 'Японский')
+input_languages['values'] = ('Определить язык', 'Английский', 'Арабский', 'Армянский', 'Белорусский', 'Болгарский', 'Греческий', 'Датский', 'Иврит', 'Испанский', 'Итальянский', 'Казахский', 'Китайский', 'Корейский', 'Латышский', 'Литовский', 'Немецкий', 'Нидерландский', 'Норвежский', 'Польский', 'Португальский', 'Русский', 'Сербский', 'Словацкий', 'Словенский', 'Украинский', 'Финский', 'Французский', 'Хинди', 'Хорватский', 'Чешский', 'Шведский', 'Эстонский', 'Японский')
 input_languages.current(21)
 input_languages.place(x = 160, y = 25, width = 120, height = 25)
+buttoninputsound = Button(text = '📢', command = button_input_sound)
+buttoninputsound ['bg'] = 'gray20'
+buttoninputsound ['fg'] = 'white'
+buttoninputsound ['font'] = ('Arial', 10, 'bold')
+buttoninputsound ['relief'] = 'raised'
+buttoninputsound.place(x = 290, y = 25, width = 25, height = 25)
 input_box = scrolledtext.ScrolledText()
 input_box ['bg'] = 'gray20'
 input_box ['fg'] = 'white'
@@ -508,9 +506,15 @@ translate_label ['font'] = ('Arial', 10, 'bold')
 translate_label ['justify'] = 'center'
 translate_label.place(x = 500, y = 25, width = 75, height = 25)
 translate_languages = Combobox(window)
-translate_languages['values'] = ('Английский', 'Арабский', 'Армняский', 'Белорусский', 'Болгарский', 'Греческий', 'Датский', 'Иврит', 'Испанский', 'Итальянский', 'Казахский', 'Китайский', 'Корейский', 'Латышский', 'Литовский', 'Немецкий', 'Нидерландский', 'Норвежский', 'Польский', 'Португальский', 'Русский', 'Сербский', 'Словацкий', 'Словенский', 'Украинский', 'Финский', 'Французский', 'Хинди', 'Хорватский', 'Чешский', 'Шведский', 'Эстонский', 'Японский')
+translate_languages['values'] = ('Английский', 'Арабский', 'Армянский', 'Белорусский', 'Болгарский', 'Греческий', 'Датский', 'Иврит', 'Испанский', 'Итальянский', 'Казахский', 'Китайский', 'Корейский', 'Латышский', 'Литовский', 'Немецкий', 'Нидерландский', 'Норвежский', 'Польский', 'Португальский', 'Русский', 'Сербский', 'Словацкий', 'Словенский', 'Украинский', 'Финский', 'Французский', 'Хинди', 'Хорватский', 'Чешский', 'Шведский', 'Эстонский', 'Японский')
 translate_languages.current(0)
 translate_languages.place(x = 575, y = 25, width = 120, height = 25)
+buttontranslatesound = Button(text = '📢', command = button_translate_sound)
+buttontranslatesound ['bg'] = 'gray20'
+buttontranslatesound ['fg'] = 'white'
+buttontranslatesound ['font'] = ('Arial', 10, 'bold')
+buttontranslatesound ['relief'] = 'raised'
+buttontranslatesound.place(x = 705, y = 25, width = 25, height = 25)
 translate_box = scrolledtext.ScrolledText(state = 'disabled')
 translate_box ['bg'] = 'gray20'
 translate_box ['fg'] = 'white'
@@ -529,6 +533,6 @@ transliteration_box ['fg'] = 'white'
 transliteration_box ['font'] = ('Arial', 10, 'bold')
 transliteration_box ['relief'] = 'flat'
 transliteration_box.place(x = 500, y = 188, width = 400, height = 88)
-t1 = threading.Thread(target=translate_button, args=())
+t1 = threading.Thread(target = translate, args = ())
 t1.start()
 window.mainloop()

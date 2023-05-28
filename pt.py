@@ -21,14 +21,14 @@ ru_voice = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_RU
 global input_text, input_language
 check_from = True
 light = False
-def button_settings():
+def button_Configurações():
     global light
     def button_dark_theme():
         global light
         light = False
         window ['bg'] = 'gray10'
-        buttonsettings ['bg'] = 'gray20'
-        buttonsettings ['fg'] = 'white'
+        buttonConfigurações ['bg'] = 'gray20'
+        buttonConfigurações ['fg'] = 'white'
         input_label ['bg'] = 'gray10'
         input_label ['fg'] = 'white'
         input_box ['bg'] = 'gray20'
@@ -64,8 +64,8 @@ def button_settings():
         global light
         light = True
         window ['bg'] = 'gray90'
-        buttonsettings ['bg'] = 'white'
-        buttonsettings ['fg'] = 'black'
+        buttonConfigurações ['bg'] = 'white'
+        buttonConfigurações ['fg'] = 'black'
         input_label ['bg'] = 'gray90'
         input_label ['fg'] = 'black'
         input_box ['bg'] = 'white'
@@ -101,6 +101,78 @@ def button_settings():
         language = set_languages.get()
         if language == 'English':
             window1.destroy()
+        elif language == 'Čeština':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['cs.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Dansk':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['da.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Deutsch':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['de.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Eesti':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['et.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Español':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['es.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Français':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['fr.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Hrvatski':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['hr.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Italiano':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['it.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Latviešu':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['lv.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Lietuvių':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['lt.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Nederlands':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['ne.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Norsk':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['no.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Português':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['pt.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Polski':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['pl.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Slovenčina':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['sk.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Slovenščina':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['sl.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Suomi':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['fi.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Svenska':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['sv.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
         elif language == 'Беларуская':
             window1.destroy()
             window.destroy()
@@ -125,49 +197,68 @@ def button_settings():
             window1.destroy()
             window.destroy()
             subprocess.Popen(['uk.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
-        elif language == 'Deutsch':
+        elif language == 'Ελληνικά':
             window1.destroy()
             window.destroy()
-            subprocess.Popen(['de.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
-        elif language == 'Español':
+            subprocess.Popen(['el.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'Հայերեն':
             window1.destroy()
             window.destroy()
-            subprocess.Popen(['es.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
-        elif language == 'Italiano':
+            subprocess.Popen(['hy.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'עִבְרִית':
             window1.destroy()
             window.destroy()
-            subprocess.Popen(['it.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+            subprocess.Popen(['he.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'اَلْعَرَبِيَّةُ':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['ar.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'हिंदी':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['hi.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == '中文':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['zh.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == '日本語':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['ja.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == '한국어':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['ko.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
     if light == False:
         window1 = Tk()
-        window1.title('Settings')
+        window1.title('Configurações')
         window1.geometry('305x105')
         window1 ['bg'] = 'gray20'
-        window1.resizable(False, False)
-        label_languages = Label(window1, text = 'Main language:')
+        label_languages = Label(window1, text = 'Idioma principal:')
         label_languages ['bg'] = 'gray20'
         label_languages ['fg'] = 'white'
         label_languages ['font'] = ('Arial', 10, 'bold')
         label_languages.place(x = 10, y = 10, width = 125, height = 25)
         set_languages = Combobox(window1, width = 10, height = 25)
-        set_languages['values'] = ('English', 'Беларуская', 'Български', 'Қазақ', 'Русский', 'Српски', 'Українська', 'Deutsch', 'Español', 'Italiano')  
+        set_languages['values'] = ('English', 'Čeština', 'Dansk', 'Deutsch', 'Eesti', 'Español', 'Français', 'Hrvatski', 'Italiano', 'Latviešu', 'Lietuvių', 'Nederlands', 'Norsk', 'Português', 'Polski', 'Slovenčina', 'Slovenščina', 'Suomi', 'Svenska', 'Беларуская', 'Български', 'Қазақ', 'Русский', 'Српски', 'Українська', 'Ελληνικά', 'Հայերեն', 'עִבְרִית', 'اَلْعَرَبِيَّةُ', 'हिंदी', '中文', '日本語', '한국어')  
         set_languages.current(0)
         set_languages.place(x = 135, y = 10, width = 100, height = 25)
-        label_themes = Label(window1, text = 'Main theme:')
+        label_themes = Label(window1, text = 'Tema principal:')
         label_themes ['bg'] = 'gray20'
         label_themes ['fg'] = 'white'
         label_themes ['font'] = ('Arial', 10, 'bold')
         label_themes.place(x = 10, y = 35, width = 125, height = 25)
-        theme_dark = Radiobutton(window1, text = 'Dark', value = 0, command = button_dark_theme)
+        theme_dark = Radiobutton(window1, text = 'Escuro', value = 0, command = button_dark_theme)
         theme_dark ['bg'] = 'gray20'
         theme_dark ['fg'] = 'white'
         theme_dark ['font'] = ('Arial', 10, 'bold')
         theme_dark.place(x = 135, y = 35, width = 75, height = 25)
-        theme_light = Radiobutton(window1, text = 'Light', value = 1, command = button_light_theme)
+        theme_light = Radiobutton(window1, text = 'Luz', value = 1, command = button_light_theme)
         theme_light ['bg'] = 'gray20'
         theme_light ['fg'] = 'white'
         theme_light ['font'] = ('Arial', 10, 'bold')
         theme_light.place(x = 210, y = 35, width = 75, height = 25)
-        applybutton = Button(window1, text = 'Apply', command = button_apply)
+        applybutton = Button(window1, text = 'aplicar', command = button_apply)
         applybutton ['bg'] = 'gray20'
         applybutton ['fg'] = 'white'
         applybutton ['font'] = ('Arial', 10, 'bold')
@@ -175,35 +266,34 @@ def button_settings():
         applybutton.place(x = 105, y = 70, width = 100, height = 25)
     else:
         window1 = Tk()
-        window1.title('Settings')
+        window1.title('Configurações')
         window1.geometry('305x105')
         window1 ['bg'] = 'white'
-        window1.resizable(False, False)
-        label_languages = Label(window1, text = 'Main language:')
+        label_languages = Label(window1, text = 'Idioma principal:')
         label_languages ['bg'] = 'white'
         label_languages ['fg'] = 'black'
         label_languages ['font'] = ('Arial', 10, 'bold')
         label_languages.place(x = 10, y = 10, width = 125, height = 25)
         set_languages = Combobox(window1, width = 10, height = 25)
-        set_languages['values'] = ('English', 'Беларуская', 'Български', 'Қазақ', 'Русский', 'Српски', 'Українська', 'Deutsch', 'Español', 'Italiano')
+        set_languages['values'] = ('English', 'Čeština', 'Dansk', 'Deutsch', 'Eesti', 'Español', 'Français', 'Hrvatski', 'Italiano', 'Latviešu', 'Lietuvių', 'Nederlands', 'Norsk', 'Português', 'Polski', 'Slovenčina', 'Slovenščina', 'Suomi', 'Svenska', 'Беларуская', 'Български', 'Қазақ', 'Русский', 'Српски', 'Українська', 'Ελληνικά', 'Հայերեն', 'עִבְרִית', 'اَلْعَرَبِيَّةُ', 'हिंदी', '中文', '日本語', '한국어')
         set_languages.current(0)
         set_languages.place(x = 135, y = 10, width = 100, height = 25)
-        label_themes = Label(window1, text = 'Main theme:')
+        label_themes = Label(window1, text = 'Tema principal:')
         label_themes ['bg'] = 'white'
         label_themes ['fg'] = 'black'
         label_themes ['font'] = ('Arial', 10, 'bold')
         label_themes.place(x = 10, y = 35, width = 125, height = 25)
-        theme_dark = Radiobutton(window1, text = 'Dark', value = 0, command = button_dark_theme)
+        theme_dark = Radiobutton(window1, text = 'Escuro', value = 0, command = button_dark_theme)
         theme_dark ['bg'] = 'white'
         theme_dark ['fg'] = 'black'
         theme_dark ['font'] = ('Arial', 10, 'bold')
         theme_dark.place(x = 135, y = 35, width = 75, height = 25)
-        theme_light = Radiobutton(window1, text = 'Light', value = 1, command = button_light_theme)
+        theme_light = Radiobutton(window1, text = 'Luz', value = 1, command = button_light_theme)
         theme_light ['bg'] = 'white'
         theme_light ['fg'] = 'black'
         theme_light ['font'] = ('Arial', 10, 'bold')
         theme_light.place(x = 210, y = 35, width = 75, height = 25)
-        applybutton = Button(window1, text = 'Apply', command = button_apply)
+        applybutton = Button(window1, text = 'aplicar', command = button_apply)
         applybutton ['bg'] = 'white'
         applybutton ['fg'] = 'black'
         applybutton ['font'] = ('Arial', 10, 'bold')
@@ -211,7 +301,6 @@ def button_settings():
         applybutton.place(x = 105, y = 70, width = 100, height = 25)
 def translate():
     while True:
-        global translate_language, input_text, input_language, data
         global check_from
         input_text = input_box.get('1.0', 'end')
         input_language = input_languages.get()
@@ -420,10 +509,11 @@ def button_input_sound():
         tts.say(str(input_text))
         tts.runAndWait()
     else:
-        msg = "This language is not supported by synthesis"
-        mb.showerror("Error", msg)
+        msg = " Este idioma não é compatível com síntese"
+        mb.showerror("Erro", msg)
 def button_translate_sound():
     global translate_language, data
+    
     if translate_language == "de":
         tts.setProperty('voice' , de_voice)
         tts.say(str(data))
@@ -452,20 +542,19 @@ def button_translate_sound():
         tts.say(str(data))
         tts.runAndWait()
     else:
-        msg = "This language is not supported by synthesis"
-        mb.showerror("Error", msg)
+        msg = "Este idioma não é compatível com síntese"
+        mb.showerror("Erro", msg)
 window = Tk()
-window.title('Translator')
+window.title('Tradutor')
 window.geometry('950x325')
 window ['bg'] = 'gray10'
-window.resizable(False, False)
-buttonsettings = Button(text = '⚙', command = button_settings)
-buttonsettings ['bg'] = 'gray20'
-buttonsettings ['fg'] = 'white'
-buttonsettings ['font'] = ('Arial', 15, 'bold')
-buttonsettings ['relief'] = 'raised'
-buttonsettings.place(x = 10, y = 10, width = 30, height = 30)
-input_label = Label(text = 'Enter text:')
+buttonConfigurações = Button(text = '⚙', command = button_Configurações)
+buttonConfigurações ['bg'] = 'gray20'
+buttonConfigurações ['fg'] = 'white'
+buttonConfigurações ['font'] = ('Arial', 15, 'bold')
+buttonConfigurações ['relief'] = 'raised'
+buttonConfigurações.place(x = 10, y = 10, width = 30, height = 30)
+input_label = Label(text = 'Digite o texto:')
 input_label ['bg'] = 'gray10'
 input_label ['fg'] = 'white'
 input_label ['font'] = ('Arial', 10, 'bold')
@@ -487,7 +576,7 @@ input_box ['fg'] = 'white'
 input_box ['font'] = ('Arial', 10, 'bold')
 input_box ['relief'] = 'flat'
 input_box.place(x = 50, y = 75, width = 400, height = 88)
-input_transliteration_label = Label(text = 'Transliteration:')
+input_transliteration_label = Label(text = 'Transliteração:')
 input_transliteration_label ['bg'] = 'gray10'
 input_transliteration_label ['fg'] = 'white'
 input_transliteration_label ['font'] = ('Arial', 10, 'bold')
@@ -499,7 +588,7 @@ input_transliteration_box ['fg'] = 'white'
 input_transliteration_box ['font'] = ('Arial', 10, 'bold')
 input_transliteration_box ['relief'] = 'flat'
 input_transliteration_box.place(x = 50, y = 188, width = 400, height = 88)
-translate_label = Label(text = 'Translation:')
+translate_label = Label(text = 'Tradução:')
 translate_label ['bg'] = 'gray10'
 translate_label ['fg'] = 'white'
 translate_label ['font'] = ('Arial', 10, 'bold')
@@ -521,7 +610,7 @@ translate_box ['fg'] = 'white'
 translate_box ['font'] = ('Arial', 10, 'bold')
 translate_box ['relief'] = 'flat'
 translate_box.place(x = 500, y = 75, width = 400, height = 88)
-transliteration_label = Label(text = 'Transliteration:')
+transliteration_label = Label(text = 'Transliteração:')
 transliteration_label ['bg'] = 'gray10'
 transliteration_label ['fg'] = 'white'
 transliteration_label ['font'] = ('Arial', 10, 'bold')

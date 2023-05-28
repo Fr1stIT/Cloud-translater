@@ -99,12 +99,8 @@ def button_settings():
         applybutton ['fg'] = 'black'
     def button_apply():
         language = set_languages.get()
-        if language == 'English':
+        if language == 'Беларуская':
             window1.destroy()
-        elif language == 'Беларуская':
-            window1.destroy()
-            window.destroy()
-            subprocess.Popen(['be.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
         elif language == 'Български':
             window1.destroy()
             window.destroy()
@@ -129,6 +125,10 @@ def button_settings():
             window1.destroy()
             window.destroy()
             subprocess.Popen(['de.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
+        elif language == 'English':
+            window1.destroy()
+            window.destroy()
+            subprocess.Popen(['en.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
         elif language == 'Español':
             window1.destroy()
             window.destroy()
@@ -139,35 +139,35 @@ def button_settings():
             subprocess.Popen(['it.exe'], shell = True, creationflags = subprocess.CREATE_NEW_CONSOLE)
     if light == False:
         window1 = Tk()
-        window1.title('Settings')
+        window1.title('Налады')
         window1.geometry('305x105')
         window1 ['bg'] = 'gray20'
         window1.resizable(False, False)
-        label_languages = Label(window1, text = 'Main language:')
+        label_languages = Label(window1, text = 'Асноўная мова:')
         label_languages ['bg'] = 'gray20'
         label_languages ['fg'] = 'white'
         label_languages ['font'] = ('Arial', 10, 'bold')
         label_languages.place(x = 10, y = 10, width = 125, height = 25)
         set_languages = Combobox(window1, width = 10, height = 25)
-        set_languages['values'] = ('English', 'Беларуская', 'Български', 'Қазақ', 'Русский', 'Српски', 'Українська', 'Deutsch', 'Español', 'Italiano')  
+        set_languages['values'] = ('Беларуская', 'Български', 'Қазақ', 'Русский', 'Српски', 'Українська', 'Deutsch', 'English', 'Español', 'Italiano')  
         set_languages.current(0)
         set_languages.place(x = 135, y = 10, width = 100, height = 25)
-        label_themes = Label(window1, text = 'Main theme:')
+        label_themes = Label(window1, text = 'Асноўная тэма:')
         label_themes ['bg'] = 'gray20'
         label_themes ['fg'] = 'white'
         label_themes ['font'] = ('Arial', 10, 'bold')
         label_themes.place(x = 10, y = 35, width = 125, height = 25)
-        theme_dark = Radiobutton(window1, text = 'Dark', value = 0, command = button_dark_theme)
+        theme_dark = Radiobutton(window1, text = 'Цёмная', value = 0, command = button_dark_theme)
         theme_dark ['bg'] = 'gray20'
         theme_dark ['fg'] = 'white'
         theme_dark ['font'] = ('Arial', 10, 'bold')
         theme_dark.place(x = 135, y = 35, width = 75, height = 25)
-        theme_light = Radiobutton(window1, text = 'Light', value = 1, command = button_light_theme)
+        theme_light = Radiobutton(window1, text = 'Светлая', value = 1, command = button_light_theme)
         theme_light ['bg'] = 'gray20'
         theme_light ['fg'] = 'white'
         theme_light ['font'] = ('Arial', 10, 'bold')
         theme_light.place(x = 210, y = 35, width = 75, height = 25)
-        applybutton = Button(window1, text = 'Apply', command = button_apply)
+        applybutton = Button(window1, text = 'Ужыць', command = button_apply)
         applybutton ['bg'] = 'gray20'
         applybutton ['fg'] = 'white'
         applybutton ['font'] = ('Arial', 10, 'bold')
@@ -175,35 +175,35 @@ def button_settings():
         applybutton.place(x = 105, y = 70, width = 100, height = 25)
     else:
         window1 = Tk()
-        window1.title('Settings')
+        window1.title('Налады')
         window1.geometry('305x105')
         window1 ['bg'] = 'white'
         window1.resizable(False, False)
-        label_languages = Label(window1, text = 'Main language:')
+        label_languages = Label(window1, text = 'Асноўная мова:')
         label_languages ['bg'] = 'white'
         label_languages ['fg'] = 'black'
         label_languages ['font'] = ('Arial', 10, 'bold')
         label_languages.place(x = 10, y = 10, width = 125, height = 25)
         set_languages = Combobox(window1, width = 10, height = 25)
-        set_languages['values'] = ('English', 'Беларуская', 'Български', 'Қазақ', 'Русский', 'Српски', 'Українська', 'Deutsch', 'Español', 'Italiano')
+        set_languages['values'] = ('Беларуская', 'Български', 'Қазақ', 'Русский', 'Српски', 'Українська', 'Deutsch', 'English', 'Español', 'Italiano')  
         set_languages.current(0)
         set_languages.place(x = 135, y = 10, width = 100, height = 25)
-        label_themes = Label(window1, text = 'Main theme:')
+        label_themes = Label(window1, text = 'Асноўная тэма:')
         label_themes ['bg'] = 'white'
         label_themes ['fg'] = 'black'
         label_themes ['font'] = ('Arial', 10, 'bold')
         label_themes.place(x = 10, y = 35, width = 125, height = 25)
-        theme_dark = Radiobutton(window1, text = 'Dark', value = 0, command = button_dark_theme)
+        theme_dark = Radiobutton(window1, text = 'Цёмная', value = 0, command = button_dark_theme)
         theme_dark ['bg'] = 'white'
         theme_dark ['fg'] = 'black'
         theme_dark ['font'] = ('Arial', 10, 'bold')
         theme_dark.place(x = 135, y = 35, width = 75, height = 25)
-        theme_light = Radiobutton(window1, text = 'Light', value = 1, command = button_light_theme)
+        theme_light = Radiobutton(window1, text = 'Светлая', value = 1, command = button_light_theme)
         theme_light ['bg'] = 'white'
         theme_light ['fg'] = 'black'
         theme_light ['font'] = ('Arial', 10, 'bold')
         theme_light.place(x = 210, y = 35, width = 75, height = 25)
-        applybutton = Button(window1, text = 'Apply', command = button_apply)
+        applybutton = Button(window1, text = 'Ужыць', command = button_apply)
         applybutton ['bg'] = 'white'
         applybutton ['fg'] = 'black'
         applybutton ['font'] = ('Arial', 10, 'bold')
@@ -216,140 +216,140 @@ def translate():
         input_text = input_box.get('1.0', 'end')
         input_language = input_languages.get()
         translate_language = translate_languages.get()
-        if input_language == 'Define language':
+        if input_language == 'Вызначыць мову':
             check_from = False
-        elif input_language == 'Arabic':
-            input_language = 'ar'
-        elif input_language == 'Armenian':
-            input_language = 'hy'
-        elif input_language == 'Belarusian':
-            input_language = 'be'
-        elif input_language == 'Bulgarian':
-            input_language = 'bg'
-        elif input_language == 'Chinese':
-            input_language = 'zh-Hans'
-        elif input_language == 'Croatian':
-            input_language = 'hr'
-        elif input_language == 'Czech':
-            input_language = 'cs'
-        elif input_language == 'Danish':
-            input_language = 'da'
-        elif input_language == 'Dutch':
-            input_language = 'nl'
-        elif input_language == 'English':
+        elif input_language == 'Англійская':
             input_language = 'en'
-        elif input_language == 'Estonian':
-            input_language = 'et'
-        elif input_language == 'Finnish':
-            input_language = 'fi'
-        elif input_language == 'French':
-            input_language = 'fr'
-        elif input_language == 'German':
-            input_language = 'de'
-        elif input_language == 'Greek':
+        elif input_language == 'Арабская':
+            input_language = 'ar'
+        elif input_language == 'Армянская':
+            input_language = 'hy'
+        elif input_language == 'Балгарская':
+            input_language = 'bg'
+        elif input_language == 'Беларуская':
+            input_language = 'be'
+        elif input_language == 'Грэцкая':
             input_language = 'el'
-        elif input_language == 'Hebrew':
+        elif input_language == 'Грэцкая':
+            input_language = 'da'
+        elif input_language == 'Іўрыт':
             input_language = 'he'
-        elif input_language == 'Hindi':
-            input_language = 'hi'
-        elif input_language == 'Italian':
-            input_language = 'it'
-        elif input_language == 'Japanese':
-            input_language = 'ja'
-        elif input_language == 'Kazakh':
-            input_language = 'kk'
-        elif input_language == 'Korean':
-            input_language = 'ko'
-        elif input_language == 'Latvian':
-            input_language = 'lv'
-        elif input_language == 'Lithuanian':
-            input_language = 'lt'
-        elif input_language == 'Norwegian':
-            input_language = 'no'
-        elif input_language == 'Polish':
-            input_language = 'pl'
-        elif input_language == 'Portuguese':
-            input_language = 'pt'
-        elif input_language == 'Russian':
-            input_language = 'ru'
-        elif input_language == 'Serbian':
-            input_language = 'sr-Cyrl'
-        elif input_language == 'Slovak':
-            input_language = 'sk'
-        elif input_language == 'Slovenian':
-            input_language = 'sl'
-        elif input_language == 'Spanish':
+        elif input_language == 'Іспанская':
             input_language = 'es'
-        elif input_language == 'Swedish':
-            input_language = 'sv'
-        elif input_language == 'Ukranian':
+        elif input_language == 'Італьянская':
+            input_language = 'it'
+        elif input_language == 'Казахская':
+            input_language = 'kk'
+        elif input_language == 'Карэйская':
+            input_language = 'ko'
+        elif input_language == 'Кітайская':
+            input_language = 'zh-Hans'
+        elif input_language == 'Латышская':
+            input_language = 'lv'
+        elif input_language == 'Літоўская':
+            input_language = 'lt'
+        elif input_language == 'Нарвежская':
+            input_language = 'no'
+        elif input_language == 'Нідэрландская':
+            input_language = 'nl'
+        elif input_language == 'Нямецкая':
+            input_language = 'de'
+        elif input_language == 'Партугальская':
+            input_language = 'pt'
+        elif input_language == 'Польская':
+            input_language = 'pl'
+        elif input_language == 'Руская':
+            input_language = 'ru'
+        elif input_language == 'Сербская':
+            input_language = 'sr-Cyrl'
+        elif input_language == 'Славацкая':
+            input_language = 'sk'
+        elif input_language == 'Славенская':
+            input_language = 'sl'
+        elif input_language == 'Украінская':
             input_language = 'uk'
-        if translate_language == 'Arabic':
-            translate_language = 'ar'
-        elif translate_language == 'Armenian':
-            translate_language = 'hy'
-        elif translate_language == 'Belarusian':
-            translate_language = 'be'
-        elif translate_language == 'Bulgarian':
-            translate_language = 'bg'
-        elif translate_language == 'Chinese':
-            translate_language = 'zh-Hans'
-        elif translate_language == 'Croatian':
-            translate_language = 'hr'
-        elif translate_language == 'Czech':
-            translate_language = 'cs'
-        elif translate_language == 'Danish':
-            translate_language = 'da'
-        elif translate_language == 'Dutch':
-            translate_language = 'nl'
-        elif translate_language == 'English':
+        elif input_language == 'Фінская':
+            input_language = 'fi'
+        elif input_language == 'Французская':
+            input_language = 'fr'
+        elif input_language == 'Харвацкая':
+            input_language = 'hr'
+        elif input_language == 'Хіндзі':
+            input_language = 'hi'
+        elif input_language == 'Чэшская':
+            input_language = 'cs'
+        elif input_language == 'Шведская':
+            input_language = 'sv'
+        elif input_language == 'Эстонская':
+            input_language = 'et'
+        elif input_language == 'Японская':
+            input_language = 'ja'
+        if translate_language == 'Англійская':
             translate_language = 'en'
-        elif translate_language == 'Estonian':
-            translate_language = 'et'
-        elif translate_language == 'Finnish':
-            translate_language = 'fi'
-        elif translate_language == 'French':
-            translate_language = 'fr'
-        elif translate_language == 'German':
-            translate_language = 'de'
-        elif translate_language == 'Greek':
+        elif translate_language == 'Арабская':
+            translate_language = 'ar'
+        elif translate_language == 'Армянская':
+            translate_language = 'hy'
+        elif translate_language == 'Балгарская':
+            translate_language = 'bg'
+        elif translate_language == 'Беларуская':
+            translate_language = 'be'
+        elif translate_language == 'Грэцкая':
             translate_language = 'el'
-        elif translate_language == 'Hebrew':
+        elif translate_language == 'Грэцкая':
+            translate_language = 'da'
+        elif translate_language == 'Іўрыт':
             translate_language = 'he'
-        elif translate_language == 'Hindi':
-            translate_language = 'hi'
-        elif translate_language == 'Italian':
-            translate_language = 'it'
-        elif translate_language == 'Japanese':
-            translate_language = 'ja'
-        elif translate_language == 'Kazakh':
-            translate_language = 'kk'
-        elif translate_language == 'Korean':
-            translate_language = 'ko'
-        elif translate_language == 'Latvian':
-            translate_language = 'lv'
-        elif translate_language == 'Lithuanian':
-            translate_language = 'lt'
-        elif translate_language == 'Norwegian':
-            translate_language = 'no'
-        elif translate_language == 'Polish':
-            translate_language = 'pl'
-        elif translate_language == 'Portuguese':
-            translate_language = 'pt'
-        elif translate_language == 'Russian':
-            translate_language = 'ru'
-        elif translate_language == 'Serbian':
-            translate_language = 'sr-Cyrl'
-        elif translate_language == 'Slovak':
-            translate_language = 'sk'
-        elif translate_language == 'Slovenian':
-            translate_language = 'sl'
-        elif translate_language == 'Spanish':
+        elif translate_language == 'Іспанская':
             translate_language = 'es'
-        elif translate_language == 'Swedish':
-            translate_language = 'sv'
-        elif translate_language == 'Ukranian':
+        elif translate_language == 'Італьянская':
+            translate_language = 'it'
+        elif translate_language == 'Казахская':
+            translate_language = 'kk'
+        elif translate_language == 'Карэйская':
+            translate_language = 'ko'
+        elif translate_language == 'Кітайская':
+            translate_language = 'zh-Hans'
+        elif translate_language == 'Латышская':
+            translate_language = 'lv'
+        elif translate_language == 'Літоўская':
+            translate_language = 'lt'
+        elif translate_language == 'Нарвежская':
+            translate_language = 'no'
+        elif translate_language == 'Нідэрландская':
+            translate_language = 'nl'
+        elif translate_language == 'Нямецкая':
+            translate_language = 'de'
+        elif translate_language == 'Партугальская':
+            translate_language = 'pt'
+        elif translate_language == 'Польская':
+            translate_language = 'pl'
+        elif translate_language == 'Руская':
+            translate_language = 'ru'
+        elif translate_language == 'Сербская':
+            translate_language = 'sr-Cyrl'
+        elif translate_language == 'Славацкая':
+            translate_language = 'sk'
+        elif translate_language == 'Славенская':
+            translate_language = 'sl'
+        elif translate_language == 'Украінская':
             translate_language = 'uk'
+        elif translate_language == 'Фінская':
+            translate_language = 'fi'
+        elif translate_language == 'Французская':
+            translate_language = 'fr'
+        elif translate_language == 'Харвацкая':
+            translate_language = 'hr'
+        elif translate_language == 'Хіндзі':
+            translate_language = 'hi'
+        elif translate_language == 'Чэшская':
+            translate_language = 'cs'
+        elif translate_language == 'Шведская':
+            translate_language = 'sv'
+        elif translate_language == 'Эстонская':
+            translate_language = 'et'
+        elif translate_language == 'Японская':
+            translate_language = 'ja'
         url = "http://api-b2b.backenster.com/b1/api/v3/translate"
         if check_from == True:
             payload = {  
@@ -420,8 +420,8 @@ def button_input_sound():
         tts.say(str(input_text))
         tts.runAndWait()
     else:
-        msg = "This language is not supported by synthesis"
-        mb.showerror("Error", msg)
+        msg = "Дадзеная мова не падтрымліваецца сінтэзам"
+        mb.showerror("Памылка", msg)
 def button_translate_sound():
     global translate_language, data
     if translate_language == "de":
@@ -452,10 +452,10 @@ def button_translate_sound():
         tts.say(str(data))
         tts.runAndWait()
     else:
-        msg = "This language is not supported by synthesis"
-        mb.showerror("Error", msg)
+        msg = "Дадзеная мова не падтрымліваецца сінтэзам"
+        mb.showerror("Памылка", msg)
 window = Tk()
-window.title('Translator')
+window.title('Перакладчык')
 window.geometry('950x325')
 window ['bg'] = 'gray10'
 window.resizable(False, False)
@@ -465,29 +465,29 @@ buttonsettings ['fg'] = 'white'
 buttonsettings ['font'] = ('Arial', 15, 'bold')
 buttonsettings ['relief'] = 'raised'
 buttonsettings.place(x = 10, y = 10, width = 30, height = 30)
-input_label = Label(text = 'Enter text:')
+input_label = Label(text = 'Увядзіце тэкст:')
 input_label ['bg'] = 'gray10'
 input_label ['fg'] = 'white'
 input_label ['font'] = ('Arial', 10, 'bold')
 input_label ['justify'] = 'center'
-input_label.place(x = 50, y = 25, width = 75, height = 25)
+input_label.place(x = 50, y = 25, width = 110, height = 25)
 input_languages = Combobox(window)
-input_languages['values'] = ('Define language', 'Arabic', 'Armenian', 'Belarusian', 'Bulgarian', 'Chinese', 'Croatian', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Finnish', 'French', 'German', 'Greek', 'Hebrew', 'Hindi', 'Italian', 'Japanese', 'Kazakh', 'Korean', 'Latvian', 'Lithuanian', 'Norwegian', 'Polish', 'Portuguese', 'Russian', 'Serbian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Ukranian')
-input_languages.current(10)
-input_languages.place(x = 130, y = 25, width = 110, height = 25)
+input_languages['values'] = ('Вызначыць мову', 'Англійская', 'Арабская', 'Армянская', 'Балгарская', 'Беларуская', 'Грэцкая', 'Дацкая', 'Іўрыт', 'Іспанская', 'Італьянская', 'Казахская', 'Карэйская', 'Кітайская', 'Латышская', 'Літоўская', 'Нарвежская', 'Нідэрландская', 'Нямецкая', 'Партугальская', 'Польская', 'Руская', 'Сербская', 'Славацкая', 'Славенская', 'Украінская', 'Фінская', 'Французская', 'Харвацкая', 'Хіндзі', 'Чэшская', 'Шведская', 'Эстонская', 'Японская')
+input_languages.current(5)
+input_languages.place(x = 160, y = 25, width = 120, height = 25)
 buttoninputsound = Button(text = '📢', command = button_input_sound)
 buttoninputsound ['bg'] = 'gray20'
 buttoninputsound ['fg'] = 'white'
 buttoninputsound ['font'] = ('Arial', 10, 'bold')
 buttoninputsound ['relief'] = 'raised'
-buttoninputsound.place(x = 250, y = 25, width = 25, height = 25)
+buttoninputsound.place(x = 290, y = 25, width = 25, height = 25)
 input_box = scrolledtext.ScrolledText()
 input_box ['bg'] = 'gray20'
 input_box ['fg'] = 'white'
 input_box ['font'] = ('Arial', 10, 'bold')
 input_box ['relief'] = 'flat'
 input_box.place(x = 50, y = 75, width = 400, height = 88)
-input_transliteration_label = Label(text = 'Transliteration:')
+input_transliteration_label = Label(text = 'Транслітарацыя:')
 input_transliteration_label ['bg'] = 'gray10'
 input_transliteration_label ['fg'] = 'white'
 input_transliteration_label ['font'] = ('Arial', 10, 'bold')
@@ -499,29 +499,29 @@ input_transliteration_box ['fg'] = 'white'
 input_transliteration_box ['font'] = ('Arial', 10, 'bold')
 input_transliteration_box ['relief'] = 'flat'
 input_transliteration_box.place(x = 50, y = 188, width = 400, height = 88)
-translate_label = Label(text = 'Translation:')
+translate_label = Label(text = 'Пераклад:')
 translate_label ['bg'] = 'gray10'
 translate_label ['fg'] = 'white'
 translate_label ['font'] = ('Arial', 10, 'bold')
 translate_label ['justify'] = 'center'
 translate_label.place(x = 500, y = 25, width = 75, height = 25)
 translate_languages = Combobox(window)
-translate_languages['values'] = ('Arabic', 'Armenian', 'Belarusian', 'Bulgarian', 'Chinese', 'Croatian', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Finnish', 'French', 'German', 'Greek', 'Hebrew', 'Hindi', 'Italian', 'Japanese', 'Kazakh', 'Korean', 'Latvian', 'Lithuanian', 'Norwegian', 'Polish', 'Portuguese', 'Russian', 'Serbian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Ukranian')
-translate_languages.current(30)
-translate_languages.place(x = 580, y = 25, width = 110, height = 25)
+translate_languages['values'] = ('Англійская', 'Арабская', 'Армянская', 'Балгарская', 'Беларуская', 'Грэцкая', 'Дацкая', 'Іўрыт', 'Іспанская', 'Італьянская', 'Казахская', 'Карэйская', 'Кітайская', 'Латышская', 'Літоўская', 'Нарвежская', 'Нідэрландская', 'Нямецкая', 'Партугальская', 'Польская', 'Руская', 'Сербская', 'Славацкая', 'Славенская', 'Украінская', 'Фінская', 'Французская', 'Харвацкая', 'Хіндзі', 'Чэшская', 'Шведская', 'Эстонская', 'Японская')
+translate_languages.current(0)
+translate_languages.place(x = 575, y = 25, width = 120, height = 25)
 buttontranslatesound = Button(text = '📢', command = button_translate_sound)
 buttontranslatesound ['bg'] = 'gray20'
 buttontranslatesound ['fg'] = 'white'
 buttontranslatesound ['font'] = ('Arial', 10, 'bold')
 buttontranslatesound ['relief'] = 'raised'
-buttontranslatesound.place(x = 700, y = 25, width = 25, height = 25)
+buttontranslatesound.place(x = 705, y = 25, width = 25, height = 25)
 translate_box = scrolledtext.ScrolledText(state = 'disabled')
 translate_box ['bg'] = 'gray20'
 translate_box ['fg'] = 'white'
 translate_box ['font'] = ('Arial', 10, 'bold')
 translate_box ['relief'] = 'flat'
 translate_box.place(x = 500, y = 75, width = 400, height = 88)
-transliteration_label = Label(text = 'Transliteration:')
+transliteration_label = Label(text = 'Транслітарацыя:')
 transliteration_label ['bg'] = 'gray10'
 transliteration_label ['fg'] = 'white'
 transliteration_label ['font'] = ('Arial', 10, 'bold')
@@ -533,6 +533,6 @@ transliteration_box ['fg'] = 'white'
 transliteration_box ['font'] = ('Arial', 10, 'bold')
 transliteration_box ['relief'] = 'flat'
 transliteration_box.place(x = 500, y = 188, width = 400, height = 88)
-t1 = threading.Thread(target = translate, args = ())
+t1 = threading.Thread(target=translate, args=())
 t1.start()
 window.mainloop()
